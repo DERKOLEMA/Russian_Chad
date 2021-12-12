@@ -1,2 +1,21 @@
+local request = request or http_request or (http and http.request) or syn.request
+if SENTINEL_V2 then
+function http_request(tb)
+return {
+StatusCode = 200;
+Body = request(tb.Url, tb.Method, (tb.Body or ''))
+}
+end
+end
+local body = request({Url = 'https://httpbin.org/get'; Method = 'GET'}).Body;
+local decoded = game:GetService('HttpService'):JSONDecode(body)
+local hwid_list = {"Syn-Fingerprint", "Exploit-Guid", "Proto-User-Identifier", "Sentinel-Fingerprint","Fingerprint",'Krnl-Hwid'};
+local hwid = "";
+for i, v in next, hwid_list do
+if decoded.headers[v] then
+hwid = decoded.headers[v];
+break
+end
+end
 local blacklist = "D8903A045B4CEB20CAEC03A4C8C8F0B088BC" and "88D7C76833FFC5608517DC56EC5B6F79ADD753E83723C8109D5F436B5ECC53D5"
 local whitelist = {}
