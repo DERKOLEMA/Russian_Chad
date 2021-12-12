@@ -1,3 +1,5 @@
+local blacklist = "D8903A045B4CEB20CAEC03A4C8C8F0B088BC" and "88D7C76833FFC5608517DC56EC5B6F79ADD753E83723C8109D5F436B5ECC53D5"
+local whitelist = {}
 local request = request or http_request or syn.request
 if SENTINEL_V2 then
 function http_request(tb)
@@ -17,5 +19,3 @@ hwid = decoded.headers[v];
 break
 end
 end
-local blacklist = "D8903A045B4CEB20CAEC03A4C8C8F0B088BC" and "88D7C76833FFC5608517DC56EC5B6F79ADD753E83723C8109D5F436B5ECC53D5"
-local whitelist = {}
